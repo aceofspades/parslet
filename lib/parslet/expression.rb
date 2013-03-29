@@ -9,7 +9,7 @@
 class Parslet::Expression
   include Parslet
   
-  autoload :Treetop, 'parslet/expression/treetop'
+  #autoload :Treetop, 'parslet/expression/treetop'
   
   # Creates a parslet from a foreign language expression. 
   #

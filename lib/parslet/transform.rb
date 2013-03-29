@@ -116,7 +116,7 @@ class Parslet::Transform
   # context?
   include Parslet   
   
-  autoload :Context, 'parslet/transform/context'
+  #autoload :Context, 'parslet/transform/context'
 
   class << self
     # FIXME: Only do this for subclasses?
