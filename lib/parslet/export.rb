@@ -3,7 +3,7 @@
 require 'set'
 require 'parslet/atoms/visitor'
 
-class Parslet::Parser
+Parslet::Parser.class_eval do
   module Visitors
     class Citrus
       attr_reader :context, :output

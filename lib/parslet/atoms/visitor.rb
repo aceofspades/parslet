@@ -3,21 +3,21 @@
 
 # 
 module Parslet::Atoms
-  class Base
+  Base.class_eval do
     def accept(visitor)
       raise NotImplementedError, "No #accept method on #{self.class.name}."
     end
   end
-  
-  class Str
+
+  Str.class_eval do
     # Call back visitors #visit_str method. See parslet/export for an example.
     #
     def accept(visitor)
       visitor.visit_str(str)
     end
   end
-  
-  class Entity
+
+  Entity.class_eval do
     # Call back visitors #visit_entity method. See parslet/export for an
     # example. 
     #
@@ -25,8 +25,8 @@ module Parslet::Atoms
       visitor.visit_entity(name, block)
     end
   end
-  
-  class Named
+
+  Named.class_eval do
     # Call back visitors #visit_named method. See parslet/export for an
     # example. 
     #
@@ -34,8 +34,8 @@ module Parslet::Atoms
       visitor.visit_named(name, parslet)
     end
   end
-  
-  class Sequence
+
+  Sequence.class_eval do
     # Call back visitors #visit_sequence method. See parslet/export for an
     # example. 
     #
@@ -43,8 +43,8 @@ module Parslet::Atoms
       visitor.visit_sequence(parslets)
     end
   end
-  
-  class Repetition
+
+  Repetition.class_eval do
     # Call back visitors #visit_repetition method. See parslet/export for an
     # example. 
     #
@@ -52,8 +52,8 @@ module Parslet::Atoms
       visitor.visit_repetition(@tag, min, max, parslet)
     end
   end
-  
-  class Alternative
+
+  Alternative.class_eval do
     # Call back visitors #visit_alternative method. See parslet/export for an
     # example. 
     #
@@ -61,8 +61,8 @@ module Parslet::Atoms
       visitor.visit_alternative(alternatives)
     end
   end
-  
-  class Lookahead
+
+  Lookahead.class_eval do
     # Call back visitors #visit_lookahead method. See parslet/export for an
     # example. 
     #
@@ -70,8 +70,8 @@ module Parslet::Atoms
       visitor.visit_lookahead(positive, bound_parslet)
     end
   end
-  
-  class Re
+
+  Re.class_eval do
     # Call back visitors #visit_re method. See parslet/export for an example. 
     #
     def accept(visitor)
@@ -80,8 +80,8 @@ module Parslet::Atoms
   end
 end
 
-class Parslet::Parser
-  # Call back visitors #visit_parser method. 
+Parslet::Parser.class_eval do
+  # Call back visitors #visit_parser method.
   #
   def accept(visitor)
     visitor.visit_parser(root)
